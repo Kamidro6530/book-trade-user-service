@@ -30,5 +30,9 @@ public class User {
         booksCollection.add(isbn);
     }
 
+    public UserId getUserId(){
+        return id;
+    }
+
 
 }
