@@ -3,7 +3,7 @@ package com.example.booktradeuserservice.user;
 import com.example.booktradeuserservice.user.api.UserCommandRepository;
 import com.example.booktradeuserservice.user.api.UserId;
 
-public class UserCommandRepositoryImpl implements UserCommandRepository {
+class UserCommandRepositoryImpl implements UserCommandRepository {
 
     UserRepository userRepository;
 

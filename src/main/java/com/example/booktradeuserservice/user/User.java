@@ -17,8 +17,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String nickname;
-    private String email;
-    private String password;
     @ElementCollection(targetClass = ISBN.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "books", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "book")

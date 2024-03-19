@@ -5,7 +5,7 @@ import com.example.booktradeuserservice.user.api.UserQueryRepository;
 
 import java.util.Optional;
 
-public class UserQueryRepositoryImpl implements UserQueryRepository {
+class UserQueryRepositoryImpl implements UserQueryRepository {
 
     UserRepository userRepository;
 
