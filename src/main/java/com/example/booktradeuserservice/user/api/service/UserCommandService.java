@@ -9,4 +9,8 @@ import org.springframework.stereotype.Service;
 public interface UserCommandService {
 
     UserId registerNewUser(UserDTO userDTO);
+
+    void deleteUser(UserId userId);
+
+    void changeUserCollectionPrivateStatus(UserId user);
 }

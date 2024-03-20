@@ -1,11 +1,9 @@
 package com.example.booktradeuserservice.controller;
 
 import com.example.booktradeuserservice.user.api.UserDTO;
+import com.example.booktradeuserservice.user.api.UserId;
 import com.example.booktradeuserservice.user.api.service.UserCommandService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -19,6 +17,16 @@ public class UserCommandController {
     @PostMapping("/register")
     public void register(@RequestBody UserDTO userDTO){
         userCommandService.registerNewUser(userDTO);
+    }
+
+    @DeleteMapping("/{userId}/delete")
+    public void delete(@PathVariable UserId userId){
+        userCommandService.deleteUser(userId);
+    }
+
+    @PutMapping("/{userId}/changeCollectionStatus")
+    public void changeCollectionStatus(@PathVariable UserId userId){
+        userCommandService.changeUserCollectionPrivateStatus(userId);
     }
 
 }

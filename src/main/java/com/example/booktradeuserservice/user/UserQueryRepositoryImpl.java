@@ -5,8 +5,6 @@ import com.example.booktradeuserservice.user.api.UserId;
 import com.example.booktradeuserservice.user.api.UserQueryRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 class UserQueryRepositoryImpl implements UserQueryRepository {
 
@@ -17,8 +15,8 @@ class UserQueryRepositoryImpl implements UserQueryRepository {
     }
 
     @Override
-    public Optional<User> getUserInformation(UserId id) {
-        return userRepository.findById(id);
+    public User getUserById(UserId id) {
+        return userRepository.findById(id).orElseThrow();
     }
 
     @Override

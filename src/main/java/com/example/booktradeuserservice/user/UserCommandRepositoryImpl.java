@@ -6,6 +6,7 @@ import com.example.booktradeuserservice.user.api.UserId;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 class UserCommandRepositoryImpl implements UserCommandRepository {
@@ -21,9 +22,14 @@ class UserCommandRepositoryImpl implements UserCommandRepository {
     }
 
     @Override
-    public UserId changeUserCollectionPrivateStatus(UserId id) {
+    public void changeUserCollectionPrivateStatus(UserId id) {
         boolean currentStatus = userRepository.findCollectionPrivateStatusByUserId(id);
-        userRepository.changeUserCollectionPrivateStatus(false,id);
-        return userRepository.changeUserCollectionPrivateStatus(!currentStatus, id);
+        userRepository.changeUserCollectionPrivateStatus(!currentStatus, id);
+    }
+
+    @Override
+    public void deleteUser(UserId userId) {
+        User user = userRepository.findById(userId).orElseThrow();
+        userRepository.delete(user);
     }
 }

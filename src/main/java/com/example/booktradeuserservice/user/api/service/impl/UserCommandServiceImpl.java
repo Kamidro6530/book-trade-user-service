@@ -18,4 +18,11 @@ class UserCommandServiceImpl implements UserCommandService {
     public UserId registerNewUser(UserDTO user) {
         return userCommandRepository.registerNewUser(user);
     }
+
+    public void deleteUser(UserId userId){userCommandRepository.deleteUser(userId);}
+
+    public void changeUserCollectionPrivateStatus(UserId userId) {
+        userCommandRepository.changeUserCollectionPrivateStatus(userId);
+    }
+
 }
