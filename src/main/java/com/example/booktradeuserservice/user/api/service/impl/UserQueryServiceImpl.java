@@ -3,7 +3,9 @@ package com.example.booktradeuserservice.user.api.service.impl;
 import com.example.booktradeuserservice.user.api.UserDTO;
 import com.example.booktradeuserservice.user.api.UserQueryRepository;
 import com.example.booktradeuserservice.user.api.service.UserQueryService;
+import org.springframework.stereotype.Service;
 
+@Service
 class UserQueryServiceImpl implements UserQueryService {
 
     private final UserQueryRepository queryRepository;

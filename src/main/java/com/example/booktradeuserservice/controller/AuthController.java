@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class AuthController {
@@ -30,12 +31,12 @@ public class AuthController {
     }
 
     @GetMapping("/")
-    public String handleAuthentication(@AuthenticationPrincipal OidcUser oidcUser){
+    public ModelAndView handleAuthentication(@AuthenticationPrincipal OidcUser oidcUser){
         boolean userExists = authService.checkUserExists(oidcUser);
         if (userExists) {
-            return "Strona głowna";
+            return new ModelAndView("redirect:" + "welcome");
         } else {
-            return "Ekran rejestracji nowego użytkownika";
+            return new ModelAndView("redirect:" + "/user/register");
         }
     }
 }

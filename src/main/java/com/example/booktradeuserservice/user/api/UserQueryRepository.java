@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
-@Primary
+
 public interface UserQueryRepository {
 
    Optional<User> getUserInformation(UserId id);

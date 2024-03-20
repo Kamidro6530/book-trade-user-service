@@ -3,9 +3,11 @@ package com.example.booktradeuserservice.user;
 import com.example.booktradeuserservice.user.api.UserCommandRepository;
 import com.example.booktradeuserservice.user.api.UserDTO;
 import com.example.booktradeuserservice.user.api.UserId;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 class UserCommandRepositoryImpl implements UserCommandRepository {
 
     UserRepository userRepository;
