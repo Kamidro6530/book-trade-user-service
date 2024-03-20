@@ -1,7 +1,7 @@
 package com.example.booktradeuserservice.controller;
 
+import com.example.booktradeuserservice.service.AuthService;
 import com.example.booktradeuserservice.user.api.UserDTO;
-import com.example.booktradeuserservice.user.api.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AuthController {
 
-    private final UserService userService;
+    private final AuthService authService;
 
-    public AuthController(UserService userService) {
-        this.userService = userService;
+    public AuthController(AuthService authService) {
+        this.authService = authService;
     }
 
     @GetMapping("/oauth2/authorization/okta")
@@ -31,15 +31,11 @@ public class AuthController {
 
     @GetMapping("/")
     public String handleAuthentication(@AuthenticationPrincipal OidcUser oidcUser){
-        UserDTO user = userService.mapOidcUserIntoUserDTO(oidcUser);
-        boolean userExists = userService.checkUserExists(user);
-
+        boolean userExists = authService.checkUserExists(oidcUser);
         if (userExists) {
-            return "Witamy cie "+ user.nickname();
+            return "Strona głowna";
         } else {
-            userService.createUser(user);
-
-            return "Ekran rejestracji";
+            return "Ekran rejestracji nowego użytkownika";
         }
     }
 }

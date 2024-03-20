@@ -1,12 +1,15 @@
 package com.example.booktradeuserservice.user.api;
 
 import com.example.booktradeuserservice.user.User;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
+@Repository
+@Primary
 public interface UserCommandRepository {
 
-    UserId registerNewUser(User user);
+    UserId registerNewUser(UserDTO user);
 
-    UserId changeUserCollectionPrivateStatus(User user);
+    UserId changeUserCollectionPrivateStatus(UserId user);
 
 }
